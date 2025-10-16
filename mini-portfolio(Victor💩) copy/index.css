@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+body, * {
+    font-family: Bebas Neue;
+    color: #FDEBD0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+.menu-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+     transition: left 0.3s ease-in-out,
+        box-shadow 0.3s ease;
+}
+
+
+.burger-icon {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 10rem;
+    color:indianred;
+    z-index: 3;
+    transition: color 0.3s ease-in-out;
+}
+
+.burger-icon:hover + .sidebar, .sidebar:hover {
+    left: 0;
+    box-shadow: 0 0 20px 5px #12163d;
+}
+
+
+.sidebar {
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: #27391C;
+    color: #FDEBD0;
+    padding: 15rem 8rem;
+    transition: left 0.5s ease-in-out, left 0.5s ease-in-out;
+}
+
+.sidebar a {
+    font-size: 10rem;
+    display: block;
+    text-decoration: none;
+    color: #FDEBD0;
+    margin: 1rem 0;
+    opacity: 0.5;
+}
+
+.sidebar a:hover{
+    opacity: 1;
+    transition: opacity 0.15s ease-in-out;
+    transform: translateX(3rem);
+    transition: transform 0.15s ease-in-out;
+    filter: drop-shadow(0 0 30px);
+
+}
+
+.page {
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+/* grid layout */
+display: grid;
+place-items: center;
+/* position fixed - klassen "show" viser pages*/
+position: fixed;
+left: -100vw;
+transition: 1s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+/* alle div'erne inde pages, er behandelet som fuld width grids*/
+.page div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+}
+
+h1{
+    font-weight: 1200;
+    font-size: 25rem;
+
+}
+
+h2{
+   font-weight: 300;
+   font-size: 15rem; 
+}
+
+h3{
+   font-weight: 300;
+   font-size: 10rem; 
+}
+
+#page2 { 
+    grid-template-rows: 1fr 3fr;
+}
+
+#page2 .top {
+    background-color: lightcoral;
+}
+
+#page2 .bottom {
+    background-image: url(assets/hejSimon.JPG);
+    background-size: cover;
+    background-position: center 45%;
+}
+
+#page3 {
+    grid-template-columns: 1fr 1fr;
+    background-color: #27391C;
+}
+
+#page3 .right {
+    background-color: #27391C;
+    padding: 10rem;
+    align-items: center;
+}
+
+#page3 .left .top {
+    background-image: url(assets/mig.jpg);
+    background-size:cover;
+    background-position: center 45%;
+}
+
+#page3 .left .bottom {
+    background-image: url(assets/.jpg);
+    background-size: cover;
+    background-position: bottom;  
+}
+
+#page6 {
+    grid-template-columns: 4fr 2fr;
+}
+
+#page6 .left {
+    background-image: url(assets/mig.JPG);
+    background-size: cover;
+}
+
+#page6 .right1 {
+    background-color:lightcoral;
+}
+
+#page6 .right2 {
+    background-color: #27391C;
+}
+
+#page6 .right3 {
+    background-color: lightcoral;
+}
+
+#page6 .right4 {
+    background-color: #27391C;
+}
+
+#page6 .right5 {
+    background-color: lightcoral;
+}
+
+#page6 .right1 h1 {
+    color: #27391C;
+}
+
+#page6 .right3 h1 {
+    color: #27391C;
+}
+
+#page6 .left h1 {
+    position: absolute;
+    bottom: 0;
+    left: 0
+    center
+}
+
+#page7 {
+    background-color: #FDEBD0;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 200px;                           
+    padding: 200px;
+}
+
+#page7 .left {
+    grid-template-rows: 1fr 1fr;
+    display: grid;                         
+    gap: 200px;  
+}
+
+#page7 .left .top{
+    background-image: url(assets/numse.JPG);
+    background-size: cover;
+    background-position: center;
+}
+
+#page7 .right {
+    grid-template-rows: 1fr 1fr;
+}
+
+#page7 .left .bottom {
+    background-image: url(assets/bil.JPG);
+    background-size: cover;
+    background-position: center;  
+}
+
+#page7 .right {
+    grid-template-rows: 1fr 1fr;
+    display: grid;                         
+    gap: 200px;  
+}
+
+#page7 .right .top {
+    background-image: url(assets/spurt.JPG);
+    background-size: cover;
+    background-position: center;  
+}
+
+#page7 .right .bottom {
+    background-image: url(assets/træ.jpg);
+    background-size: cover;
+    background-position: center;  
+
+}
