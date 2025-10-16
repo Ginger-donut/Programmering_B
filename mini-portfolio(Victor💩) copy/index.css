@@ -2,7 +2,7 @@
 
 body, * {
     font-family: Bebas Neue;
-    color: #FDEBD0;
+    color: whitesmoke;
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -114,22 +114,22 @@ h3{
 }
 
 #page2 .top {
-    background-color: lightcoral;
+    background-color: #1a2142;
 }
 
 #page2 .bottom {
-    background-image: url(assets/hejSimon.JPG);
+    background-image: url(assets/Dinmor.JPG);
     background-size: cover;
-    background-position: center 45%;
+    background-position: center 58%;
 }
 
 #page3 {
     grid-template-columns: 1fr 1fr;
-    background-color: #27391C;
+    background-color: #1a2142;
 }
 
 #page3 .right {
-    background-color: #27391C;
+    background-color: #1a2142;
     padding: 10rem;
     align-items: center;
 }
@@ -141,57 +141,68 @@ h3{
 }
 
 #page3 .left .bottom {
-    background-image: url(assets/.jpg);
+    background-image: url(assets/victor.jpg);
     background-size: cover;
-    background-position: bottom;  
+    background-position: center 50%;
 }
+
 
 #page6 {
     grid-template-columns: 4fr 2fr;
 }
 
 #page6 .left {
-    background-image: url(assets/mig.JPG);
+    background-image: url(assets/hejSimon.JPG);
     background-size: cover;
+    background-position: center 50%;
 }
 
 #page6 .right1 {
-    background-color:lightcoral;
+    background-image: url(assets/kat.jpg);
+    background-size: cover;
+    background-position: center 76%;
 }
 
 #page6 .right2 {
-    background-color: #27391C;
+    background-image: url(assets/Victordyr.jpg);
+    background-size: cover;
+    background-position: center;
 }
 
 #page6 .right3 {
-    background-color: lightcoral;
+    background-image: url(assets/mus.jpg);
+    background-size: cover;
+    background-position: center 50%;
 }
 
 #page6 .right4 {
-    background-color: #27391C;
+    background-image: url(assets/kaniner.jpg);
+    background-size: cover;
+    background-position: center 40%;
 }
 
 #page6 .right5 {
-    background-color: lightcoral;
+    background-image: url(assets/skydmig.jpg);
+    background-size: cover;
+    background-position: center 50%;
 }
 
-#page6 .right1 h1 {
-    color: #27391C;
+#page6 h3 {
+    color: black;
+ 
+
 }
 
-#page6 .right3 h1 {
-    color: #27391C;
-}
 
 #page6 .left h1 {
     position: absolute;
     bottom: 0;
     left: 0
-    center
+    center 
 }
 
 #page7 {
-    background-color: #FDEBD0;
+    background-color: #1a2142;
     grid-template-columns: 1fr 1fr;
     display: grid;
     gap: 200px;                           
@@ -205,9 +216,9 @@ h3{
 }
 
 #page7 .left .top{
-    background-image: url(assets/numse.JPG);
+    background-image: url(assets/numse.jpg);
     background-size: cover;
-    background-position: center;
+    background-position: center 30%;
 }
 
 #page7 .right {
@@ -215,7 +226,7 @@ h3{
 }
 
 #page7 .left .bottom {
-    background-image: url(assets/bil.JPG);
+    background-image: url(assets/øøøhhh.jpg);
     background-size: cover;
     background-position: center;  
 }
@@ -227,14 +238,14 @@ h3{
 }
 
 #page7 .right .top {
-    background-image: url(assets/spurt.JPG);
+    background-image: url(assets/venner.JPG);
     background-size: cover;
     background-position: center;  
 }
 
 #page7 .right .bottom {
-    background-image: url(assets/træ.jpg);
+    background-image: url(assets/yay.jpg);
     background-size: cover;
-    background-position: center;  
+    background-position: center 50%;  
 
 }
