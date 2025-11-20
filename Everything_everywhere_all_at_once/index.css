@@ -1,0 +1,378 @@
+@import url('https://fonts.cdnfonts.com/css/cubano');
+.eyes {
+    background-image: url(./assets/eye.svg);
+    width: 0.7em;
+    height: auto;
+}
+
+body {
+    font-family: cubano;
+    background-color: #eee;
+    margin: 0%;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    overflow-x: hidden; 
+    align-items: center;
+}
+
+.herosection {
+    mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+    position: relative;
+    width: 100%;
+    height: 100vh;       
+    overflow: hidden;
+}
+
+.hero-box {
+    width: 100%;       
+    height: 100vh;     
+    position: relative; 
+    overflow: hidden; 
+}
+
+h1 {
+    position: absolute;
+    top: -100px;             
+    left: 100px;        
+    font-size: 7rem;
+    color: white;
+    text-align: center;
+    text-shadow: 0 0 100px rgba(0,0,0,0.5);
+    width: 100%; 
+}
+
+h2 {
+    align-content: center;
+    font-size: 2rem;
+    color: black;
+    text-align: center;
+}
+
+h4 {
+    font-size: 3rem;
+    color: white;
+    text-align: center;
+    position: relative;
+    top: -40px;
+}
+
+h3 {
+    font-size: 1.3rem;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+#dropdown {
+    position: fixed; 
+    top: 10px;    
+    left: 10px;  
+    z-index: 10;
+}
+
+video {
+    width: auto;
+    height: 110%;
+}
+
+
+/* parallax */ 
+#wrap {
+    min-height: 100vh;
+    transform: scale(1);
+    /* hvor langt det skal gå på aksen */ 
+    --x-translate: 0; 
+    --y-translate: 0; 
+    background-color: #27391C;
+    position: relative;
+    perspective: 1000px;
+}
+
+#item_wrap {
+    width: 100%;
+    height: 100%;
+    transform-origin: center center; /* gør sjovet nok, at det forgår i midten */ 
+    transform-style: preserve-3d;
+    transition: transform 0,6s ease-out;
+}
+
+.face {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    backface-visibility: inherit; /* bestemmer om bagsiden er synlig eller usynlig, betyder ikke rigtigt noget eftersom alle mine lag er oven på hinanden, men det er stadig en god ide at have */ 
+}
+
+/* gør at når man hover overpå 'wrap' sker det også for alle 'item_wrap' */ 
+#wrap:hover #item_wrap {
+     transform: rotate3d(0, 1, 0, calc(var(--x-translate,0)*25deg)) rotate3d(0, 1, 0, calc(var(--y-translate,0)*25deg));
+}
+
+/* translateZ(px) er hvor meget de bliver skubbet frem og tilbage*/ 
+
+
+.baggrund{
+    background:url('assets/parallax/baggrund.png') ;
+    background-size: cover;
+    scale: 1.1;
+    transform: translateZ(0px) scale(1);
+    z-index: 1;
+}
+
+
+.tekst{
+    top: 50px;
+    transform: translateX(-50%) translateZ(300px) scale(0.7);
+    width: 90%;              
+    z-index: 3;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+   
+
+.dude {
+    background: url(assets/parallax/dude.png)  no-repeat center;
+    z-index: 3;
+    transform: translateZ(450px) scale(1);
+    background-size: cover;
+    top: 68px;
+    left: -130px;
+    scale: 1.2;
+}
+
+
+.maskedgirl{
+    background: url(assets/parallax/maskedgirl.png) no-repeat center;
+    background-size: 90%;
+    z-index: 4;
+    transform: translateZ(700px) scale(1);
+    right: 330px;
+    top: 110px;
+}
+
+
+.evelyn{
+    background: url(assets/parallax/evelyn.png) no-repeat center;;
+    background-size: 100%;
+    scale: 1.3;
+    z-index: 5;
+    transform: translateZ(900px) scale(1);
+    left: 230px ;
+    top: 0px;
+}
+
+#intro {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 50px;  
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+#intro .right {
+    display: grid;
+    grid-template-rows: 1fr 1fr;  
+    gap: 50px; 
+}
+
+
+#intro .right .top {
+    background-image: url(assets/Hot-dogs.png);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#intro .right .bottom {
+    background-image: url(assets/JOY.gif);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#intro .left {
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} 
+
+#cinematography {
+    background-color: #eee;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 50px;  
+    height: 100vh;
+    box-sizing: border-box; /* gør så patting ikke for vp til at gå over */
+}
+
+#cinematography .left {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;  
+}
+
+#cinematography .left .top {
+    background-image: url(assets/last.jpg);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#cinematography .left .bottom {
+    background-image: url(assets/glass.jpeg);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#cinematography .right {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;  
+}
+
+#cinematography .right .top {
+    background-image: url(assets/cinematography_Green_lighing.webp);
+     background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#cinematography .right .bottom {
+    background-image: url(assets/bagel.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#googly_eyes {
+    background-color: #eee;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 50px;  
+    height: 100vh;
+    box-sizing: border-box; /* gør så patting ikke for vp til at gå over */
+}
+
+#googly_eyes .left {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;  
+}
+
+#googly_eyes .left .top {
+    background-image: url(assets/stone.jpg);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#googly_eyes .left .bottom {
+    background-image: url(assets/yaya.png);
+    background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#googly_eyes .right {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;  
+}
+
+#googly_eyes .right .top {
+    background-image: url(assets/yay.png);
+     background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#googly_eyes .right .bottom {
+    background-image: url(assets/wang.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#quotes {
+    background-color: #eee;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    padding: 50px;  
+    height: 100vh;
+    box-sizing: border-box; /* gør så patting ikke for vp til at gå over */
+}
+
+#quotes .left {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px; 
+    position: relative; 
+}
+
+#quotes .left .top {
+    position: relative;  
+    width: 100%;
+    height: 350px;      
+    overflow: hidden;    
+}
+
+#quotes .left .top .rock {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: translate(-50%, -50%);
+         
+}
+
+#rock_video {
+    position: absolute;
+    top: 350px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+#quotes .left .bottom {
+    background-image: url(assets/okay.jpg);
+    background-size: cover;
+    background-position: center -50px;
+    background-repeat: no-repeat;
+
+}
+
+#quotes .right {
+    display: grid;                         
+    grid-template-rows: 1fr 1fr;
+    gap: 50px;  
+}
+
+#quotes .right .top {
+    background-image: url(assets/laundry\ and\ taxes.jpg);
+     background-size: cover;
+    background-position: center -25px;
+    background-repeat: no-repeat;
+}
+
+#quotes .right .bottom {
+    background-image: url(assets/sad.jpg);
+    background-size: cover;
+    position: relative;
+    background-repeat: no-repeat;
+}

@@ -1,0 +1,157 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+
+body, * {
+    font-family: Bebas Neue;
+    color: #27391C;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.menu-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.burger-icon {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 4rem;
+    color: #27391C;
+    z-index: 3;
+    transition: color 0.3s ease-in-out;
+    
+}
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover {
+    color: #FDEBD0;
+}
+
+.sidebar {
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: #27391C;
+    color: #FDEBD0;
+    padding: 6rem 1rem 0 1rem;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+
+}
+
+.burger-icon:hover + .sidebar, .sidebar:hover {
+    left: 0;
+    box-shadow: 0,0,10px 1px black;
+}
+
+.sidebar a {
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: block;
+    text-decoration: none;
+    color: #FDEBD0;
+    margin: 1rem 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out,
+        transform 0.15s ease-in-out;
+
+}
+
+.sidebar a:hover {
+    opacity: 1;
+    transform: translateX(0.5rem);
+    filter: drop-shadow(0,0,10px white);
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+/*all div's inside pages are here*/
+.page div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 3rem;
+
+}
+
+#page1{
+    background-image: url(./assets/forest.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.scroll{
+    min-height:100%;    
+    overflow:scroll;
+    padding:20rem;
+    gap:2rem;
+}
+
+.box{
+    max-width:30vw;
+    min-height:40rem;
+    grid-template-rows: 1fr 8fr;
+    background-color: rgba(0,0,0,0.6);
+    border-radius: 1rem;
+    padding:2rem;
+}
+
+.box .top{
+    background-color: black;
+    color:#FDEBD0;
+    border-radius: 1rem;
+    font-size:2rem;
+}
+
+.box .bottom{
+    color:#FDEBD0;
+}
+
+#page2{
+    overflow-y:scroll;
+}
+
+.parallax{
+    min-height:100vh;
+    background-attachment: fixed;
+    background-size:cover;
+}
+
+.background1{
+    background-image: url('./assets/bird.jpg');
+}
+.background2{
+    background-image: url('./assets/forest.jpg');
+}

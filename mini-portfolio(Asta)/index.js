@@ -3,6 +3,9 @@ var currentPage = '#page7'
 //P5 setup () bliver kladt En gang før siden vises 
 function setup() {
     console.log('P5 setup kaldt Allahuakbar')
+    //skift til current page 
+    shiftPage(currentPage)
+    
     //Sæt menu op
     //Hent alle sider som et array
     var allPages = selectAll('.page')

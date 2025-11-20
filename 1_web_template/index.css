@@ -256,3 +256,37 @@ h1{
     display: flex;
     justify-content: center;
 }
+
+#page8 {
+    grid-template-columns: 1fr 1fr;
+}
+
+#page8 .left {
+    background-color: lightcoral;
+} 
+
+#page8 .right .top {
+    background-color: #27391C;
+    height: 50vh;
+}
+
+#page8 .right .bottom{
+    background-color: black;
+    color:white;
+    overflow:hidden;
+    height: 50vh;
+    position:relative;
+}
+
+#page8 .right .bottom video{
+    object-fit: cover;
+    object-position: center;
+    width:100%;
+    height: 100%;
+}
+
+#page8 .right .bottom #overlay{
+    position:absolute;
+    display:grid;
+    place-items:center;
+}

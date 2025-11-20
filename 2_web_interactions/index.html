@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web app template med P5.js</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <div class="menu-wrapper">
+        <div class="burger-icon">🍔</div>
+        <div class="sidebar">
+            
+        </div>
+    </div>
+   
+    <main>
+        <div class="page" id="page1" title="Button">
+            <button id="theButton">Click me</button>
+            <a href="https://p5js.org/reference/p5/createButton/">createButton</a>
+        </div>
+         <div class="page" id="page2" title="Drop down">
+            <select name="theDropdown" id="theDropdown">
+                <option value="white" selected>Vælg venligst en baggrundsfarve</option>
+                <option value="orangered">Orange Rød</option>
+                <option value="hotpink">Hot Pink</option>
+            </select>
+        </div>
+        <div class="page" id="page3" title="input field">
+            <span>
+                <input type="text" id="theInput">
+                <button id="theInputButton">Go</button>
+                <h1 id="theInputTitle"></h1>
+              </span>
+        </div>
+        <div class="page" id="page4">
+            <span>
+                <input type="checkbox" name="" id="ck1">
+                <label id="ckl" for="ck1">Har du eller har du haft lyst til at gøre oprør mod rektor</label>
+                <h1 id="rebel"></h1>
+            </span>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+
+</body>
+
+</html>
