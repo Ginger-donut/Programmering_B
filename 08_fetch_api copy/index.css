@@ -18,10 +18,8 @@ body {
     width: 100vw;
     height: 100vh;
     overflow: hidden;
-    /* grid layout */
     display: grid;
     place-items: center;
-    /* vises først med klasen "show" */
     position: fixed;
     left: -100vw;
     transition: all .6s ease-in-out;
@@ -110,7 +108,7 @@ button{
     justify-content: center;
 }
 
-.buttons { /* knapperne under kortene */
+.buttons {
     display: flex;
     gap: 1rem;
 }
@@ -160,8 +158,83 @@ button{
     margin: 0;          
 }
 
-#placeBetBtn {
-    margin-top: 1.2rem;
-    box-shadow: 0 4px 0px rgba(0,0,0,0.3);
+
+
+#page2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas: 
+        "result result"
+        "final-player final-dealer"
+        "restartBtn restartBtn";
+    padding: 2rem;
+    gap: 1rem;
 }
 
+#final-dealer, #final-player {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    box-shadow: 5px 5px 0px 0px #016948;
+    background-color: #017a51;
+    width: 75%;
+    justify-self: center;
+    height: 90%;
+}
+
+#final-dealer { grid-area: final-dealer; }
+#final-player { grid-area: final-player; }
+
+#final-dealer .cards, #final-player .cards {
+    height: 30vh;
+    width: 80%;
+    position: relative;
+    margin-top: -1.5rem;
+}
+
+#result {
+    grid-area: result;
+    font-size: 3rem;
+    color: #fffde0;
+    font-style: italic;
+    text-align: center;
+    margin-top: 10rem;  
+    padding-bottom: 1rem;
+}
+
+#restartBtn {
+    grid-area: restartBtn;
+    justify-self: center;
+    padding: 1rem 3rem;
+    font-size: 1.2rem;
+    border-radius: 1rem;
+    background: #fffde0;
+    box-shadow: 0 4px 0px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;           
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10rem
+}
+
+#restartBtn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 0px rgba(0,0,0,0.3);
+}
+
+ h2 {
+    color: #fffde0;
+    font-style: italic;
+}
+
+#final-dealer-total, #final-player-total {
+    color: #fffde0;
+    font-style: italic;
+    font-size: 1.5rem;
+    margin-top: 8rem
+}
