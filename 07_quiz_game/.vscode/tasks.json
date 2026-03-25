@@ -1,0 +1,14 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "append_css",
+			"type": "shell",
+			"command": "cat >> \"${1}\" <<EOF\n${2}\nEOF",
+			"args": [
+				"/Users/simo/Documents/github/Programmering_B/07_quiz_game/index.css",
+				".true { background-color: lightgreen; padding: 10px; margin: 10px; }\n.false { background-color: salmon; padding: 10px; margin: 10px; }"
+			]
+		}
+	]
+}

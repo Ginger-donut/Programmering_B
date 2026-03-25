@@ -1,6 +1,5 @@
-var currentPage = '#page2'
-var mouseX = 0;
-var mouseY = 0;
+var currentPage = '#page3'
+var capture
 
 //P5 setup() bliver kaldt EN gang før siden vises 
 function setup(){
@@ -9,7 +8,9 @@ function setup(){
     //skift til current page 
     shiftPage(currentPage)
 
-
+    capture = createCapture(VIDEO)
+    capture.size(720,468)
+    select('page 1').child(capture)
     
     //Sæt menu op
     //Hent alle sider som et array
@@ -37,15 +38,3 @@ function shiftPage(newPage){
     select(newPage).addClass('show')
     currentPage = newPage
 }
-
-document.addEventListener("mousemove", (e)=>{
-    mouseX = e.clientX
-    mouseY = e.clientY
-    screewidth = window.innerWidth
-    screenheight = window.innerHeight
-    document.querySelectorAll("parallax_mouse").forEach((elem)=>{
-        elem.style.transform =`translate(${mouseX - screenWidth /2}px) (${mouseY - screenheight /2}px)`
-    })
-
-})
-    

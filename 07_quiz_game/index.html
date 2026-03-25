@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Game</title>
+    <!-- Skeleton CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+    <link rel="stylesheet" href="index.css">
+    <!-- P5.js -->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.js"></script>
+</head>
+<body>
+    <main>
+        <div id="page1" class="page show">
+            <h1>Quiz Spil</h1>
+            <button id="startGame" class="button-primary">Start Quiz</button>
+        </div>
+
+        <div id="page2" class="page">
+            <h4 id="question">Loading...</h4>
+            <div class="row">
+                <button id="trueBtn">Sandt</button>
+                <button id="falseBtn">Falsk</button>
+            </div>
+        </div>
+        
+        <div id="page3" class="page">
+            <h2>Resultat</h2>
+            <div id="result"></div>
+            <button id="restartBtn">Prøv igen</button>
+        </div>
+    </main>
+    <script src="./index.js"></script>
+</body>
+</html>

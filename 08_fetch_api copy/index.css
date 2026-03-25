@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #991311;
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+#page1 {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr auto;
+    padding-top: 3rem;
+    grid-template-areas: 
+        "player dealer"
+        "betting-boks betting-boks";
+    padding: 2rem;
+    gap: 1rem;
+}
+
+#player {
+    grid-area: player;
+    width: 90%;
+    height: 90%;
+}
+
+#dealer {
+    grid-area: dealer;
+    width: 90%;
+    height: 90%;
+}
+
+#player, #dealer {
+    position: relative;
+    display: grid;
+    justify-items: center;
+    gap: 1rem;
+    padding: 2rem;
+    border-radius: 2rem;
+    box-shadow: 5px 5px 0px 0px #016948;
+    background-color: #017a51;
+    grid-template-rows: 1fr auto auto;
+}
+
+#betting-boks{
+    grid-area: betting-boks;
+    background-color: #017a51;
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    box-shadow: 5px 5px 0px 0px #016948;
+    color: #fffde0;
+    min-height: 100px; 
+    font-style: italic;
+    text-align: center;
+    font-size: 0.8rem; 
+    align-items: center;  
+
+}
+
+.cards{
+    height:40vh;
+    width:80%;
+    position:relative;
+}
+
+.cards img{
+    position:absolute;
+}
+
+#result{
+    font-size:4rem;
+    display:grid;
+    place-items:center;
+    color: #fffde0;
+    font-style: italic;
+}
+
+button{
+    background: #fffde0;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.buttons { /* knapperne under kortene */
+    display: flex;
+    gap: 1rem;
+}
+
+#player-total, #dealer-total{
+    font-size: medium;
+    font-style: italic;
+    color: #fffde0;
+    align-content: end;
+}
+
+.jeton {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-weight: bold;
+    color: white;
+    border: 3px dashed rgba(255,255,255,0.5);
+    box-shadow: 0 4px 0px rgba(0,0,0,0.3);
+    font-size: 1.9rem;
+}
+
+.jeton:hover {
+    transform: scale(1.1);
+}
+
+#jeton {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.j5   { background-color: #e74c3c; color: #fffde0; } /* rød */
+.j10  { background-color: #3498DB; color: #fffde0;} /* blå */
+.j25  { background-color: #2ecc71; color: #fffde0;} /* grøn */
+.j100 { background-color: #F1C40F; color: #fffde0;} /* gul */
+
+#balance-display, #current-bet {
+    font-size: 5rem;    
+    margin: 0;          
+}
+
+#placeBetBtn {
+    margin-top: 1.2rem;
+    box-shadow: 0 4px 0px rgba(0,0,0,0.3);
+}
+

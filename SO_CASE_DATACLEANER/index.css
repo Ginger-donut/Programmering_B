@@ -1,0 +1,62 @@
+/* Global styling */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    margin: 0;
+    padding: 0; 
+    background-color: #f0f0f0;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: auto auto 1fr;
+    gap: 1rem;
+}
+
+.main-header {
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+.top, .bottom {
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin: 0 10px;
+    position: relative;
+}
+
+.bottom {
+    margin-bottom: 10px;
+    overflow: hidden;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+/* Info Box Styling */
+#info-box {
+    position:fixed;
+    /* Fast størrelse så den ikke hopper */
+    width: 20rem;
+    height: 10rem;
+    overflow: hidden;
+    bottom:4rem;
+    right:2rem;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    pointer-events: none; /* Musen klikker igennem */
+    z-index: 200;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+}

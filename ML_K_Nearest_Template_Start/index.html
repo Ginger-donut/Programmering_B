@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supervised Learning: K-Nearest Neighbors</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+    <!-- Chart.js: Bruges til at tegne og opdatere scatter-visualiseringen i canvas -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+    <header class="main-header" id="main-header">Abalones alder </header>
+    
+    <!-- TOP: KONFIGURATION & TEST -->
+    <div class="top">
+        <h3 id="section-1-title"></h3>
+        <p id="instruction-text"></p>
+        
+        <div class="controls">
+            <!-- INPUT TIL NY DATA -->
+            <div>
+                <label>
+                    <!-- label-x: Tekstlabel for første feature (sættes dynamisk fra JS) -->
+                    <span id="label-x">Første Variabel</span>: <span id="val-x"> - </span>
+                    <br>
+                    <!-- input-x: Slider til at vælge værdi for første feature -->
+                    <input type="range" id="input-x">
+                </label>
+            </div>
+            
+            <div>
+                <label>
+                    <!-- label-y: Tekstlabel for anden feature (sættes dynamisk fra JS) -->
+                    <span id="label-y">Anden Variabel</span>: <span id="val-y"> - </span>
+                    <br>
+                    <!-- input-y: Slider til at vælge værdi for anden feature -->
+                    <input type="range" id="input-y">
+                </label>
+            </div>
+
+            <!-- INDSTILLINGER FOR K -->
+            <label>
+                <!-- k-value: Viser den aktuelle k-værdi fra slideren -->
+                Antal Naboer (k): <span id="k-value">3</span>
+                <br>
+                <!-- k-slider: Slider til valg af antal naboer (kun ulige værdier) -->
+                <input type="range" id="k-slider" min="1" max="15" value="3" step="2">
+            </label>
+            
+            <button id="predict-btn" class="button-primary">GÆT</button>
+
+            <!-- RESULTAT -->
+            <label>
+                <!-- prediction-text: Viser den forudsagte klasse/label -->
+                Resultat: <span id="winner">?</span><br>
+                Alder: <span id="alder">?</span>
+                <!-- winner-color-box: Viser farven for den vindende klasse -->
+                 <!--<span id="winner-color-box" style="display:inline-block; width:15px; height:15px; border:1px solid #333; margin-left:5px;"></span>--> 
+                <br>
+            </label>
+        </div>
+    </div>
+
+    <!-- BOTTOM: VISUALISERING -->
+    <div class="bottom">
+        <h3 id="section-2-title">2. Visualisering</h3>
+        <div id="canvas-container" style="position: relative; height:400px; width:100%">
+            <!-- chartCanvas: Canvas-element som Chart.js renderer scatterplottet i -->
+            <canvas id="chartCanvas"></canvas>
+        </div>
+    </div>
+    
+    <script src="./index.js"></script>
+</body>
+
+</html>

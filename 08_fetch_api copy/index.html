@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blackjack</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+</head>
+
+<body>
+    <div class="sidebar"></div>
+
+    <main>
+
+        <div class="page" id="page1" </div>
+            <div id="player">
+                <div class="cards"></div>
+                <span class="buttons">
+                    <button id="playerDrawBtn">Hit</button>
+                    <button id="playerStandBtn">Stand</button>
+                </span>
+                <div id="player-total">Total card value: </div>
+            </div>
+            <div id="dealer">
+                <div class="cards"></div>
+                <div id="dealer-total">Total card value: </div>
+            </div>
+            <div id="betting-boks">
+                <h1 id="balance-display">Balance: 1000</h1>
+                <div id="jeton">
+                    <div class="jeton j5" data-værdi="5">5</div>
+                    <div class="jeton j10" data-værdi="10">10</div>
+                    <div class="jeton j25" data-værdi="25">25</div>
+                    <div class="jeton j100" data-værdi="100">100</div>
+                </div>
+                    <button id="placeBetBtn">Place Bet</button>
+                    <h1 id="current-bet">Current Bet: 0</h1>
+                    </div>
+            </div>
+        </div>
+
+        <div class="page" id="page2">
+            <h1 id="result"></h1>
+            <button id="restartBtn">one more time</button>
+        </div>
+
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>
