@@ -29,3 +29,4 @@ function shiftPage(newPage) {
     select(newPage).addClass('show');
     currentPage = newPage;
 }
+

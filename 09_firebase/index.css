@@ -1,14 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
+body {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-image: url('./assets/_\ \(1\).jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 
-body,
 * {
     font-family: "open sans";
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-
 }
 
 .page {
@@ -22,3 +31,70 @@ body,
     left: 0;
 }
 
+#quotes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+    padding: 2rem 10vw;
+    max-height: 85vh;
+    overflow: scroll;
+    width: 100%;
+}
+
+.card {
+    border: 1px solid rgba(255, 182, 193, 0.8);
+    padding: 3rem;
+    border-radius: 1rem;
+    position: relative;
+    padding-top: 5rem;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(6px);
+}
+
+.date {
+    color: lightblue;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.delete {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.delete:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px 4px rgb(0 0 255 / 0.2);
+}
+
+.input-container {
+    position: fixed;
+    bottom: 5rem;
+    width: 80%;
+    background: transparent;
+}
+
+#newQuote {
+    width: 100%;
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.yapper-modtager {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+#newQuote, #newYapper, #newModtager {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 182, 193, 0.8);
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+}
+
+h1 {
+    font-size: 6rem;
+    margin-top: 2rem;
+}
