@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escape the Jungle</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
+    <script src="./firebase.js"></script>
+</head>
+
+<body>
+    <div id="timer">0 sek</div>
+
+    <main>
+
+        <!-- STARTSIDE -->
+        <div class="page" id="start" title="Start">
+            <div class="overlay">
+                <h1>Escape the Jungle</h1>
+                <p>Find vej ud af junglen ved at løse gåder i hvert rum.<br>
+                    Din tid tæller — jo hurtigere, jo bedre!</p>
+                <button id="btn-start">Start spil</button>
+                <div id="highscores">
+                    <h2>High Scores</h2>
+                    <ol id="score-list"></ol>
+                </div>
+            </div>
+        </div>
+
+        <!-- RUM 1: JUNGLEN -->
+        <div class="page" id="room1" title="Junglen">
+            <div id="room1-hint" class="hint">Find de 3 skjulte symboler i junglen...</div>
+            <div id="room1-found" class="found-counter">Fundet: 0 / 3</div>
+
+            <div id="symbol1" class="hotspot">🌿</div>
+            <div id="symbol2" class="hotspot">🍄</div>
+            <div id="symbol3" class="hotspot">🦎</div>
+        </div>
+
+        <!-- RUM 2: LYSNINGEN -->
+        <div class="page" id="room2" title="Lysningen">
+            <div id="room2-hint" class="hint">Klik på skyerne i den rigtige rækkefølge: fra mindst til størst</div>
+
+            <!-- Klikbare skyer -->
+            <div id="cloud1" class="hotspot cloud">☁️</div>
+            <div id="cloud2" class="hotspot cloud">🌥️</div>
+            <div id="cloud3" class="hotspot cloud">⛅</div>
+
+            <!-- Input (vises når skyerne er klikket rigtigt) -->
+            <div id="room2-code" class="code-input">
+                <p>Jeg har byer men ingen huse, skove men ingen træer, vand men ingen fisk. Hvad er jeg?</p>
+                <input type="text" id="room2-answer" placeholder="Skriv svaret her...">
+                <button id="room2-submit">Tjek svar</button>
+                <div id="room2-error" class="error"></div>
+            </div>
+        </div>
+
+        <!-- SLUTSIDE -->
+        <div class="page" id="complete" title="Færdig">
+            <div class="overlay">
+                <h1>Du slap fri!</h1>
+                <p id="final-time"></p>
+                <div id="save-score">
+                    <input type="text" id="player-name" placeholder="Dit navn">
+                    <button id="btn-save">Gem high score</button>
+                </div>
+                <button id="btn-restart">Spil igen</button>
+            </div>
+        </div>
+
+    </main>
+    <script src="./index.js"></script>
+</body>
+
+</html>

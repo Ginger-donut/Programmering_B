@@ -1,0 +1,99 @@
+body {
+    overflow: hidden;
+    background: #111;
+    color: white;
+}
+
+/* Sider — skjult til venstre, vist med .show */
+.page {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: -100vw;
+    transition: left 0.5s ease-in-out;
+    background-size: cover;
+    background-position: center;
+}
+.page.show { left: 0; }
+
+/* Overlay — centreret indhold oven på baggrund */
+.overlay {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+/* Hint — centreret tekst i toppen af et rum */
+.hint {
+    position: absolute;
+    bottom: 1.5rem;
+    left: 1.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.5rem 1.5rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+/* Hotspot — klikbart element placeret i et rum */
+.hotspot {
+    position: absolute;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 5;
+}
+
+.hotspot:hover { transform: scale(1.3); }
+
+button { background: white; }
+
+/* Code-input — skjult, vises med .show */
+.code-input {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 20;
+}
+.code-input.show { display: grid; }
+
+
+/* Timer */
+#timer {
+    position: fixed;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 0.4rem 1rem;
+    border-radius: 0.5rem;
+    z-index: 100;
+}
+
+/* High score liste */
+#score-list { list-style: none; }
+#score-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.3rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ---- Rum-baggrunde ---- */
+#start    { background-image: url('./assets/forest.jpg'); }
+#room1    { background-image: url('./assets/forest.jpg'); }
+#room2    { background-image: url('./assets/skies.jpg'); }
+#complete { background-image: url('./assets/skies.jpg'); }
+
+/* ---- Hotspot-placeringer ---- */
+#room1 #symbol1 { top: 35%; left: 20%; }
+#room1 #symbol2 { top: 60%; left: 65%; }
+#room1 #symbol3 { top: 45%; left: 45%; }
+
+#room2 #cloud1 { top: 25%; left: 25%; font-size: 2.5rem; }
+#room2 #cloud2 { top: 35%; left: 60%; font-size: 4rem; }
+#room2 #cloud3 { top: 20%; left: 45%; font-size: 3rem; }
