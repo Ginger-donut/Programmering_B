@@ -1,10 +1,14 @@
+@font-face {
+    font-family: 'Peter Pedal';
+    src: url('Peter pedal.ttf') format('truetype');
+}
+
 body {
     overflow: hidden;
     background: #111;
     color: white;
 }
 
-/* Sider — skjult til venstre, vist med .show */
 .page {
     width: 100vw;
     height: 100vh;
@@ -17,16 +21,13 @@ body {
 }
 .page.show { left: 0; }
 
-/* Overlay — centreret indhold oven på baggrund */
 .overlay {
     display: grid;
     place-items: center;
     height: 100%;
-    background: rgba(0, 0, 0, 0.6);
     text-align: center;
 }
 
-/* Hint — centreret tekst i toppen af et rum */
 .hint {
     position: absolute;
     bottom: 1.5rem;
@@ -37,19 +38,16 @@ body {
     z-index: 10;
 }
 
-/* Hotspot — klikbart element placeret i et rum */
 .hotspot {
     position: absolute;
     font-size: 2rem;
     cursor: pointer;
     z-index: 5;
 }
-
-.hotspot:hover { transform: scale(1.3); }
+.hotspot:hover { transform: scale(1.1); }
 
 button { background: white; }
 
-/* Code-input — skjult, vises med .show */
 .code-input {
     position: absolute;
     inset: 0;
@@ -60,8 +58,26 @@ button { background: white; }
 }
 .code-input.show { display: grid; }
 
+.success-overlay {
+    display: none;
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 30;
+    place-items: center;
+}
+.success-overlay.show { display: grid; }
 
-/* Timer */
+.success-box {
+    background: #1a1a1a;
+    border: 2px solid white;
+    border-radius: 1rem;
+    padding: 3rem 5rem;
+    text-align: center;
+    max-width: 700px;
+    font-size: 2rem;
+}
+
 #timer {
     position: fixed;
     top: 1rem;
@@ -74,26 +90,65 @@ button { background: white; }
     z-index: 100;
 }
 
-/* High score liste */
 #score-list { list-style: none; }
 #score-list li {
     display: flex;
     justify-content: space-between;
     padding: 0.3rem 0;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
-/* ---- Rum-baggrunde ---- */
-#start    { background-image: url('./assets/forest.jpg'); }
-#room1    { background-image: url('./assets/forest.jpg'); }
-#room2    { background-image: url('./assets/skies.jpg'); }
-#complete { background-image: url('./assets/skies.jpg'); }
+#start    { background-image: url('./assets/home.png'); }
+#room1    { background-image: url('./assets/bedroom.png'); }
+#room2    { background-image: url('./assets/kitchen.png'); }
+#room3    { background-image: url('./assets/stue.png'); }
+#room4    { background-image: url('./assets/office.png'); }
+#complete { background-image: url('./assets/slut.png'); }
 
-/* ---- Hotspot-placeringer ---- */
-#room1 #symbol1 { top: 35%; left: 20%; }
-#room1 #symbol2 { top: 60%; left: 65%; }
-#room1 #symbol3 { top: 45%; left: 45%; }
+.tangent {
+    background: transparent;
+    border-radius: 4px;
+}
+.tangent:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: none;
+}
 
-#room2 #cloud1 { top: 25%; left: 25%; font-size: 2.5rem; }
-#room2 #cloud2 { top: 35%; left: 60%; font-size: 4rem; }
-#room2 #cloud3 { top: 20%; left: 45%; font-size: 3rem; }
+.fejl-besked {
+    display: none;
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    background: rgba(180, 0, 0, 0.75);
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 2rem;
+    z-index: 40;
+    text-align: center;
+}
+.fejl-besked.show { display: block; }
+
+#room4-blur { align-items: flex-start; padding-top: 2rem; overflow-y: auto; }
+
+h1 {
+    font-family: 'Peter Pedal', cursive;
+    color: #FFD700;
+    -webkit-text-stroke: 8px #cc0000;
+    paint-order: stroke fill;
+    font-size: 64px;
+    font-weight: bold;
+    line-height: 1.4;
+}
+
+#start h2 {
+    font-family: 'Peter Pedal', cursive;
+    color: #FFD700;
+    -webkit-text-stroke: 6px #cc0000;
+    paint-order: stroke fill;
+    font-size: 40px;
+    font-weight: bold;
+    display: inline-block;
+}
+

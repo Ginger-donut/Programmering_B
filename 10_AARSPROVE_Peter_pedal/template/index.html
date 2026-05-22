@@ -1,74 +1,185 @@
 <!DOCTYPE html>
-<html lang="da">
+<html lang="da">    <!-- Fortæller google at siden er på dansk -->
 
-<head>
+
+<head>     <!-- Alt herinde vises IKKE direkte til brugeren (bortset fra titlen i fanen) -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Escape the Jungle</title>
+    <title>Peter Pedal er blevet væk</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
         integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/addons/p5.sound.min.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/11.6.0/firebase-firestore-compat.js"></script>
     <script src="./firebase.js"></script>
 </head>
 
-<body>
-    <div id="timer">0 sek</div>
+<body> <!-- <body> indeholder ALT det synlige indhold på siden. -->
+    <div id="timer">0 sek</div> <!-- En div er et generisk container-element uden semantisk betydning -->
 
     <main>
 
-        <!-- STARTSIDE -->
-        <div class="page" id="start" title="Start">
-            <div class="overlay">
-                <h1>Escape the Jungle</h1>
-                <p>Find vej ud af junglen ved at løse gåder i hvert rum.<br>
-                    Din tid tæller — jo hurtigere, jo bedre!</p>
+        <!-- START PAGE -->
+        <div class="page show" id="start" title="Start">
+            <div class="overlay"> <!-- overlay er bare gør at inde under det her er oven på baggrundsbilledet -->
+                <h1>Peter Pedal er blevet væk </h1>
                 <button id="btn-start">Start spil</button>
                 <div id="highscores">
                     <h2>High Scores</h2>
-                    <ol id="score-list"></ol>
+                    <ol id="score-list"></ol> <!-- en nummereret liste, js fylder den med <li> elementer som bliver hentet fra firebase -->
                 </div>
             </div>
         </div>
 
-        <!-- RUM 1: JUNGLEN -->
-        <div class="page" id="room1" title="Junglen">
-            <div id="room1-hint" class="hint">Find de 3 skjulte symboler i junglen...</div>
-            <div id="room1-found" class="found-counter">Fundet: 0 / 3</div>
+        <!-- ROOM 1: Soveværelset -->
+        <div class="page" id="room1" title="Soveværelset">
 
-            <div id="symbol1" class="hotspot">🌿</div>
-            <div id="symbol2" class="hotspot">🍄</div>
-            <div id="symbol3" class="hotspot">🦎</div>
-        </div>
+            <div id="room1-hint" class="hint">Kig på papiret på sengen</div>
 
-        <!-- RUM 2: LYSNINGEN -->
-        <div class="page" id="room2" title="Lysningen">
-            <div id="room2-hint" class="hint">Klik på skyerne i den rigtige rækkefølge: fra mindst til størst</div>
 
-            <!-- Klikbare skyer -->
-            <div id="cloud1" class="hotspot cloud">☁️</div>
-            <div id="cloud2" class="hotspot cloud">🌥️</div>
-            <div id="cloud3" class="hotspot cloud">⛅</div>
+            <div id="note-hotspot" class="hotspot" style="top:56%; left:42%; width:9%; height:8%;"></div> <!--Et "hotspot" er et usynligt klikbart område lagt oven på baggrundsbilledet. (procent værdierene virker dog ikke så godt her, normalt bruges de så de kan tilpasses forskellige skærmstørrelser, men det ser ikke så godt ud her, eftersom baggrunden ikke skalerer på samme måde)-->
 
-            <!-- Input (vises når skyerne er klikket rigtigt) -->
-            <div id="room2-code" class="code-input">
-                <p>Jeg har byer men ingen huse, skove men ingen træer, vand men ingen fisk. Hvad er jeg?</p>
-                <input type="text" id="room2-answer" placeholder="Skriv svaret her...">
-                <button id="room2-submit">Tjek svar</button>
-                <div id="room2-error" class="error"></div>
+            <div id="note-popup" class="code-input">
+                <div class="success-box" style="max-width:600px; position:relative;">
+                    <button id="note-close" style="position:absolute; top:0.5rem; right:0.8rem; background:none; border:none; color:#fefdbb; font-size:1.4rem; cursor:pointer;">X</button>
+                    <p style="font-style:italic; font-size:1.4rem; line-height:1.8;">
+                        "Hvis elleve plus to er en,<br>
+                        hvad er så ni plus fem?"
+                    </p> <!--<p> står for paragraph, og bruges til at definere tekstafsnit.-->
+                    <p style="font-size:1rem; color:#aaa;">Hint: Tænk på et ur</p>
+                    <input type="text" id="room1-code" maxlength="1" placeholder="?" autocomplete="off"
+                        style="font-size:2rem; text-align:center; width:120px; background:#222; color:white; border:2px solid white; border-radius:0.5rem; padding:0.3rem; margin-top:1rem;">
+                    <!--<input> står for inputfelt, og bruges til at få brugeren til at indtaste data. maxlength angiver det maksimale antal tegn der kan indtastes.-->
+                    <br><br> <!-- <br> er et linjeskift, så i dette tilfælde er det dobbelt da der er to. (det er bare for at lave lidt afstand mellem inputfeltet og knappen) -->
+                    <button id="btn-room1-check">Tjek svaret</button>   
+                    <!-- 
+                        Knappen der tjekker om svaret er korrekt.
+                        JavaScript sammenligner input-feltets værdi med det rigtige svar ("2").
+                        Hvis korrekt: vis success-overlay. Hvis forkert: vis fejlbesked.
+                    -->
+                    <p id="room1-error" style="color:#ff6b6b; display:none; margin-top:1rem;">Forkert svar, prøv igen!</p>
+                </div> <!-- display:none betyder elementet er usynligt til at starte med. (JavaScript sætter det til display:block hvis svaret er forkert.) -->
             </div>
+
+            <div id="room1-success" class="success-overlay">
+                <div class="success-box">
+                    <h2>Svaret var rigtigt!</h2>
+                    <p>Første ciffer i koden er 2, husk det!</p>
+                    <button id="btn-room1-next">Led i andet rum</button>
+                </div>
+            </div>
+
         </div>
 
-        <!-- SLUTSIDE -->
+        <!-- ROOM 2: Køkkenet -->
+        <div class="page" id="room2" title="Køkkenet">
+
+            <div id="room2-hint" class="hint">Find og klik på alle 5 frugter i køkkenet.</div>
+            <div id="room2-found" class="hint" style="left:auto; right:1.5rem;">Frugter fundet: 0 / 5</div>
+             <!-- Viser hvor mange frugter spilleren har fundet indtil videre. JavaScript opdaterer teksten hver gang en frugt klikkes:
+                 document.getElementById("room2-found").innerText = antal fugter klikket" -->
+
+            <div id="banan" class="hotspot fruit" style="top:10%; left:41%; width:12%; height:15%;"></div>
+            <div id="watermelon" class="hotspot fruit" style="top:91%; left:50.5%; width:6%; height:8%;"></div>
+            <div id="lemon" class="hotspot fruit" style="top:90%; left:57%; width:7%; height:15%;"></div>
+            <div id="orange" class="hotspot fruit" style="top:55%; left:42%; width:12%; height:12.3%;"></div>
+            <div id="lime" class="hotspot fruit" style="top:95%; left:53%; width:5%; height:6%;"></div>
+
+            <div id="room2-success" class="success-overlay">
+                <div class="success-box">
+                    <h2>Godt klaret!</h2>
+                    <p>Du har fundet alle frugterne. Andet ciffer i koden er 5, husk det!</p>
+                    <button id="btn-room2-next">Gå videre</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ROOM 3: LIVING ROOM -->
+        <div class="page" id="room3" title="Stuen">
+
+            <div id="room3-hint" class="hint">Spil den rigtige melodi! Klik: Rød - Grøn - Gul - Orange - Grøn</div>
+            <div id="room3-progress" class="hint" style="left:auto; right:1.5rem;">Trin: 0 / 5</div>
+
+            <div id="key-rød"    class="hotspot tangent" style="top:60%; left:39%; width:3.5%; height:15%;"></div>
+            <div id="key-grøn"   class="hotspot tangent" style="top:62%; left:45.5%; width:2.5%; height:10%;"></div>
+            <div id="key-gul"    class="hotspot tangent" style="top:58%; left:57%; width:5.5%; height:15%;"></div>
+            <div id="key-orange" class="hotspot tangent" style="top:60%; left:66.5%; width:7.5%; height:14%;"></div>
+
+            <div id="room3-success" class="success-overlay">
+                <div class="success-box">
+                    <h2>Perfekt melodi!</h2>
+                    <p>Tredje ciffer i koden er 5, du har nu hele koden!</p>
+                    <button id="btn-room3-next">Videre til næste rum</button>
+                </div>
+            </div>
+
+            <div id="room3-error" class="fejl-besked">
+                Forkert! Prøv igen fra starten.
+            </div>
+
+        </div>
+
+        <!-- ROOM 4: OFFICE -->
+        <div class="page" id="room4" title="Kontoret">
+
+            <div id="room4-hint" class="hint">Indtast den 3-cifrede kode du har samlet på computeren</div>
+
+            <div id="computer-hotspot" class="hotspot" style="top:30%; left:36%; width:28%; height:45%;"></div>
+
+            <!-- Computer code input -->
+            <div id="room4-codeinput" class="code-input">
+                <div class="success-box" style="max-width:400px;">
+                    <h2>Computerkode</h2>
+                    <p>Indtast den 3-cifrede kode du har samlet:</p>
+                    <input type="text" id="room4-code" maxlength="3" placeholder="???" autocomplete="off"
+                        style="font-size:2.5rem; text-align:center; width:160px; background:#222; color:white; border:2px solid white; border-radius:0.5rem; padding:0.3rem; margin-top:0.5rem; letter-spacing:0.5rem;">
+                    <br><br>
+                    <button id="btn-room4-check">Indtast kode</button>
+                    <p id="room4-error" style="color:#ff6b6b; display:none; margin-top:1rem;">Forkert kode — prøv igen!</p>
+                </div>
+            </div>
+
+            <!-- Blurred image -->
+            <div id="room4-blur" class="code-input">
+                <div class="success-box" style="max-width:600px;">
+                    <h2>Hvor er Peter Pedal?</h2>
+
+                    <img id="blur-img" src="./assets/outside.png"
+                        style="width:100%; border-radius:0.5rem; margin-bottom:1rem; filter:blur(20px);"> <!-- Billedet starter sløret med filter:blur(20px). -->
+
+                    <div style="display:flex; gap:0.5rem; justify-content:center; margin-bottom:1rem;"> <!-- flex lægger input og knap på samme linje, justify center betyder de er centreret  -->
+                        <input type="text" id="blur-guess" placeholder="Hvor er han?" autocomplete="off"
+                            style="font-size:1.1rem; padding:0.4rem 0.8rem; background:#222; color:white; border:2px solid white; border-radius:0.5rem; width:200px;">
+                        <button id="btn-blur-guess">Gæt!</button>
+                    </div>
+                    <p id="blur-guess-error" style="color:#ff6b6b; display:none; margin-bottom:0.5rem;">Forkert! +10 sek tilføjet.</p>
+                    <p id="blur-guess-correct" style="color:#4caf50; display:none; margin-bottom:0.5rem;">Rigtigt!</p>
+                     <!-- De to <p> elementer er begge skjulte med display:none. JavaScript viser den rigtige én afhængigt af om gættet er korrekt eller forkert. -->
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div id="room4-success" class="success-overlay">
+                <div class="success-box">
+                    <h2>Du fandt Peter Pedal!</h2>
+                    <p>Han er udenfor i haven!</p>
+                    <button id="btn-room4-next">Se din tid!</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- END PAGE -->
         <div class="page" id="complete" title="Færdig">
             <div class="overlay">
-                <h1>Du slap fri!</h1>
-                <p id="final-time"></p>
+                <h1>Du fandt Peter Pedal!</h1>
+                <p id="final-time"></p> <!-- JavaScript opdaterer dette element med den endelige tid, når spilleren kommer til denne side. -->
                 <div id="save-score">
-                    <input type="text" id="player-name" placeholder="Dit navn">
+                    <input type="text" id="player-name" placeholder="Dit navn" autocomplete="off">
                     <button id="btn-save">Gem high score</button>
                 </div>
                 <button id="btn-restart">Spil igen</button>
@@ -76,7 +187,8 @@
         </div>
 
     </main>
-    <script src="./index.js"></script>
+    <script src="./index.js" defer></script>
+     <!-- defer betyder at JavaScript-filen først køres når hele HTML-siden er indlæst, så JavaScript ikke forsøger at finde elementer der ikke eksisterer endnu. -->
 </body>
 
 </html>
