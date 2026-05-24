@@ -5,19 +5,19 @@ var currentPage = '#start'
 var timerInterval = null // Reference til intervallet der opdaterer timeren, så den kan stoppe det senere
 var seconds = 0 // Antal sekunder siden spillet startede, opdateres hvert sekund af timerInterval
 
-// Room 1 (Bedroom)
+// Rum 1 (soveværelset)
 const ROOM1_CODE = '2' // const gør at denne værdi ikke kan ændres senere i koden, da det er en fast del af spillets gåde
 
-// Room 2 (Kitchen)
+// Rum 2 (Køkkenet)
 var fruitsFound = 0 //  var gør i modsætning til const at denne værdi kan ændres, da spilleren finder frugter og klikker på dem, og spillet skal holde styr på hvor mange der er fundet indtil videre
 
-// Room 3 (Living room)
+// Rum 3 (Stuen)
 const xylophone_answer = ['rød', 'grøn', 'gul', 'orange', 'grøn'] // array, (rækkefølgen af farver der skal trykkes i xylofon-gåden)
 var xylophone_step = 0 // ændre sig hver gang spilleren trykker på en tone i xylofonen, for at holde styr på hvor langt i rækkefølgen de er kommet
 
-// Room 4 (Office)
+// Rum 4 (Kontoret)
 const ROOM4_CODE = '255'
-const BLUR_ANSWERS = ['udenfor', 'haven', 'have', 'huset', 'gård'] // array, med de forskellige svarmuligheder
+const BLUR_SVAR = ['udenfor', 'haven', 'have', 'gården', 'gård'] // array, med de forskellige svarmuligheder
 
 // Firestore reference
 var scoresRef = db.collection('highscores') // en variabel, så jeg ikke skal skrive hele db.collection('highscores') hver gang jeg vil tilgå high scores i Firestore, og kan bare skrive scoresRef i stedet. 
@@ -186,11 +186,11 @@ function checkRoom4Code() {
 // ROOM 4: kontor (gæt det uklare billede)
 // ============================================
 function checkBlurGuess() {
-    var input = select('#blur-guess').value().trim().toLowerCase()  // .toLowerCase() konverterer til små bogstaver så "Haven" og "HAVEN" matcher på samme måde som "haven" i BLUR_ANSWERS arrayet.
+    var input = select('#blur-guess').value().trim().toLowerCase()  // .toLowerCase() konverterer til små bogstaver så "Haven" og "HAVEN" matcher på samme måde som "haven" i BLUR_SVAR arrayet.
     var correct = false
 
-    for (var i = 0; i < BLUR_ANSWERS.length; i++) {
-        if (input === BLUR_ANSWERS[i]) { // tjekker om det indtastede gæt matcher nogen af de korrekte svar i BLUR_ANSWERS arrayet.
+    for (var i = 0; i < BLUR_SVAR.length; i++) {
+        if (input === BLUR_SVAR[i]) { // tjekker om det indtastede gæt matcher nogen af de korrekte svar i BLUR_SVAR arrayet.
             correct = true
             break // hvis vi har fundet et match, behøver vi ikke tjekke resten af svarene i arrayet, så vi kan stoppe løkken med break
         }
@@ -214,7 +214,7 @@ function checkBlurGuess() {
 // ============================================
 // HIGH SCORE (Firestore)
 // ============================================
-function loadHighScores() {
+function loadHighScores(){
     scoresRef.orderBy('seconds', 'asc').limit(10).onSnapshot(snap => {
         // .orderBy('seconds', 'asc') sorterer fra lavest til højest tid
         // .limit(10) henter kun top 10 så listen ikke vokser i det uendelige
@@ -230,6 +230,7 @@ function loadHighScores() {
             select('#score-list').child(li) // tilføjer det færdige <li> element til #score-list i HTML-filen, så det bliver vist på siden
         })
     })
+}   
 
 
 function saveHighScore() {
