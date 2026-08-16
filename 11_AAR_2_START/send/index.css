@@ -2,15 +2,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
 
 * {
+    font-family: "open sans";
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "open sans";
 }
 
 body {
     background-image: url('../assets/tomat.jpg');    /* .. betyder vi går en mappe op  */
-    background-size: 100% 115%;   
+    background-size: 100% 115%;
     background-position: center;
     min-height: 100vh;
 }
@@ -24,6 +24,7 @@ body {
     position: fixed;
     top: 100vh;
     transition: all .6s ease-in-out;
+    text-align: center;
 }
 
 .show {
@@ -49,8 +50,4 @@ body {
 
 #toast.toastShown {
     top: 10px;
-}
-
-#msg{
-    text-shadow: 4px 4px 12px darkgreen; 
 }
