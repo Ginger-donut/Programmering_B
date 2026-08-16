@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Momo+Trust+Display&display=swap');
+
+
+body,
+* {
+    font-family: "open sans";
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+.menu-wrapper {
+    position: fixed;
+    width: fit-content;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+}
+
+.burger-icon {
+    position: fixed;
+    left: 1rem;
+    top: 1rem;
+    cursor: pointer;
+    font-size: 4rem;
+    color: black;
+    z-index: 3;
+    transition: color 0.3s ease-in-out;
+    
+}
+
+.menu-wrapper:has(.sidebar:hover) .burger-icon, .burger-icon:hover {
+    color: white;
+}
+
+.sidebar {
+    position: relative;
+    left: -100%;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 15rem;
+    background-color: black;
+    color: white;
+    padding: 6rem 1rem 0 1rem;
+    box-sizing: border-box;
+    transition: left 0.3s ease-in-out;
+
+}
+
+.burger-icon:hover + .sidebar, .sidebar:hover {
+    left: 0;
+    box-shadow: 0,0,10px 1px black;
+}
+
+.sidebar a {
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: block;
+    text-decoration: none;
+    color: white;
+    margin: 1rem 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease-in-out,
+        transform 0.15s ease-in-out;
+
+}
+
+.sidebar a:hover {
+    opacity: 1;
+    transform: translateX(0.5rem);
+    filter: drop-shadow(0,0,10px white);
+}
+
+.page {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    /* grid layout */
+    display: grid;
+    place-items: center;
+    /* vises først med klasen "show" */
+    position: fixed;
+    left: -100vw;
+    transition: all .6s ease-in-out;
+}
+
+.show {
+    left: 0;
+}
+
+/*all div's inside pages are here*/
+.page div {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 3rem;
+}
+
+
+.elev:hover{
+    transform:scale(0.8);
+    box-shadow: 10px 10px black;
+    border-radius:50%;
+    font-size: 3rem;
+}
