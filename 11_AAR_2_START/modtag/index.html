@@ -4,16 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web template with p5.js</title>
+    <title>MQTT modtagerne</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
         integrity="sha512-EZLkOqwILORob+p0BXZc+Vm3RgJBOe1Iq/0fiI7r/wJgzOFZMlsqTa29UEl6v6U6gsV4uIpsNZoV32YZqrCRCQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mqtt/5.15.2/mqtt.min.js" integrity="sha512-3kmSDJDp+Sk6XIt2AAkhFUrdlBwtWf6eFuksz407qMKcV/d1xfvsF/o4glnPWX/P3/X4yQJ2EBHEBTaWoXGf1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdn.jsdelivr.net/npm/p5@1.11.10/lib/p5.min.js"></script>
 </head>
 
 <body>
+    <div id="toast"></div>
     <main>
+        <h1>Svaret er:</h1>
+        <p id="exprMsg">Venter på et regnestykke …</p>
+        <h2 id="svarMsg"></h2>
+
+        <p><a href="../send/index.html">← Tilbage til send-siden</a></p>
     </main>
     <script src="./index.js"></script>
 </body>
